@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة العرض</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- الهيدر -->
+  <header class="bg-indigo-700 text-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">عرض حصري</h1>
+      <nav>
+        <a href="#features" class="ml-4 hover:underline">المميزات</a>
+        <a href="#testimonials" class="ml-4 hover:underline">آراء المستخدمين</a>
+        <a href="#cta" class="ml-4 hover:underline">اشترك الآن</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي -->
+  <section class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-center py-20 px-6">
+    <h2 class="text-4xl font-bold mb-4">احصل على العرض قبل انتهاء الوقت!</h2>
+    <p class="text-lg mb-6">سجل الآن واستمتع بفرصة حصرية لا تفوّت.</p>
+    <img src="https://via.placeholder.com/600x300.png?text=Offer+Image" alt="Offer" class="mx-auto rounded-xl shadow-lg mb-6">
+    <!-- عداد تنازلي -->
+    <div id="countdown" class="text-2xl font-mono mb-6"></div>
+    <!-- زر CTA -->
+    <a id="cta" href="https://your-ogads-link.com" 
+       class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full transition">
+      اضغط هنا الآن
+    </a>
+  </section>
+
+  <!-- المميزات -->
+  <section id="features" class="py-16 container mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-10">مميزات العرض</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+        <h4 class="text-xl font-semibold mb-2">سهولة التسجيل</h4>
+        <p>خطوات بسيطة وسريعة للحصول على العرض.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+        <h4 class="text-xl font-semibold mb-2">موثوق 100%</h4>
+        <p>عرض مقدم من شركائنا الموثوقين عالمياً.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+        <h4 class="text-xl font-semibold mb-2">لفترة محدودة</h4>
+        <p>سارع بالانضمام قبل انتهاء الوقت المحدد.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- آراء المستخدمين -->
+  <section id="testimonials" class="bg-gray-200 py-16 px-6">
+    <h3 class="text-3xl font-bold text-center mb-10">ماذا يقول المستخدمون؟</h3>
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <p class="italic">“تجربة رائعة! سجلت في دقائق وحصلت على العرض فوراً.”</p>
+        <p class="mt-4 font-bold">- أحمد</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <p class="italic">“أنصح به بشدة، عرض مميز وسهل الاستخدام.”</p>
+        <p class="mt-4 font-bold">- ليلى</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="bg-indigo-700 text-white text-center py-6 mt-12">
+    <p>© 2025 جميع الحقوق محفوظة</p>
+  </footer>
+
+  <!-- سكربت العداد -->
+  <script>
+    // ضبط نهاية العد التنازلي (مثلاً بعد 24 ساعة)
+    const countdownDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+
+    const countdownFunction = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "انتهى العرض!";
+      } else {
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerHTML =
+          `${hours} ساعة : ${minutes} دقيقة : ${seconds} ثانية`;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
